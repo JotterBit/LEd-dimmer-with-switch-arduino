@@ -1,0 +1,25 @@
+// C++ code
+//
+int lights_d = 0;
+
+void setup()
+{
+  pinMode(2, INPUT);
+  pinMode(A0, INPUT);
+  pinMode(3, OUTPUT);
+}
+
+void loop()
+{
+  if (digitalRead(2) == 1) {
+    lights_d = (1 - lights_d);
+    while (digitalRead(2) == 1) {
+    }
+  }
+  if (lights_d == 1) {
+    analogWrite(3, map(analogRead(A0), 0, 1023, 0, 90));
+  } else {
+    analogWrite(3, 0);
+  }
+  delay(10); // Delay a little bit to improve simulation performance
+}
